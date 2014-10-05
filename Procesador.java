@@ -1,19 +1,14 @@
 public class Procesador 
  {
-
-	 ProcesadorListener listener;
-
+ 	
+	private final Escuchas escuchas;
 	 String contenido;
 
-	 public Procesador(){
-		 this.contenido = "";
-	 }
+	 public Procesador()
 
 	 public void editar(String contenido){
 		 this.contenido = contenido;
-		 if(listener != null){
-			 listener.onTextoEditado(this);
-		 }
+		 escuchas.TextoEditado();
 	 }
 
 	 public String ver_contenido(){
@@ -21,7 +16,7 @@ public class Procesador
 	 }
 
 	 public void addProcesadorListener(ProcesadorListener l){
-		 this.listener = l;
+		 this.escuchas.agregar(l);
 	 }
 
 
